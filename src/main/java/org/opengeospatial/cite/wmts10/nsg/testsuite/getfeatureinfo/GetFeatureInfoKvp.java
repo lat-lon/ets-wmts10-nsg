@@ -39,8 +39,6 @@ public class GetFeatureInfoKvp extends AbstractBaseGetFeatureInfoFixture {
 
     private URI getFeatureInfoURI;
 
-    private boolean _debug = false;
-
     @Test(description = "NSG Web Map Tile Service (WMTS) 1.0.0, Requirement 8", dependsOnMethods = "verifyGetFeatureInfoSupported")
     public void wmtsGetFeatureInfoExists() {
         getFeatureInfoURI = ServiceMetadataUtils.getOperationEndpoint_KVP( this.wmtsCapabilities,
@@ -101,10 +99,6 @@ public class GetFeatureInfoKvp extends AbstractBaseGetFeatureInfoFixture {
             // }
             // sa.assertAll();
         } catch ( XPathExpressionException | XPathFactoryConfigurationException xpe ) {
-            System.out.println( xpe.getMessage() );
-            if ( this._debug ) {
-                xpe.printStackTrace();
-            }
             assertTrue( false, "Invalid or corrupt XML or KVP structure:  " + xpe.getMessage() );
         }
     }

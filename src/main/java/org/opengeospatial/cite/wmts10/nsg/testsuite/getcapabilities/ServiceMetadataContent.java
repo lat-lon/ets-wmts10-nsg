@@ -95,7 +95,7 @@ public class ServiceMetadataContent extends AbstractBaseGetCapabilitiesFixture {
         // --- Test Method: 4.0 - (The response provides keywords based upon the NAS for the following: Layer data
         // structure, Style data structure, Dimension data structure, TileMatrixSet data structure, TileMatrix data
         // structure, and Themes data structure.)
-        verifyNASkeywords( false, "WMTS ServiceMetadata Capabilities docuemnt", wmtsCapabilities,
+        verifyNASkeywords( false, "WMTS ServiceMetadata Capabilities document", wmtsCapabilities,
                            "//ows:ServiceIdentification/ows:Keywords" );
     }
 

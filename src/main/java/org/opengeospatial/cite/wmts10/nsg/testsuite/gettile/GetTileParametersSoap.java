@@ -58,8 +58,6 @@ public class GetTileParametersSoap extends AbstractBaseGetTileFixture {
             getTileURI = ServiceMetadataUtils.getOperationEndpoint_SOAP( this.wmtsCapabilities,
                                                                          WMTS_Constants.GET_TILE, ProtocolBinding.POST );
         }
-        String requestFormat = null;
-
         String soapURIstr = getTileURI.toString();
         assertUrl( soapURIstr );
 
@@ -83,8 +81,6 @@ public class GetTileParametersSoap extends AbstractBaseGetTileFixture {
             String tileRow = this.reqEntity.getKvpValue( WMTS_Constants.TILE_ROW_PARAM );
             String tileCol = this.reqEntity.getKvpValue( WMTS_Constants.TILE_COL_PARAM );
 
-            requestFormat = this.reqEntity.getKvpValue( WMTS_Constants.FORMAT_PARAM ); // --- default setting
-
             NodeList imageFormats = ServiceMetadataUtils.getNodeElements( wmtsCapabilities,
                                                                           "//wmts:Contents/wmts:Layer[ows:Identifier = '"
                                                                                                   + layerName
@@ -93,7 +89,7 @@ public class GetTileParametersSoap extends AbstractBaseGetTileFixture {
             SoftAssert sa = new SoftAssert();
 
             for ( int i = 0; i < imageFormats.getLength(); i++ ) {
-                requestFormat = imageFormats.item( i ).getTextContent().trim();
+                String requestFormat = imageFormats.item( i ).getTextContent().trim();
 
                 WMTS_SOAPcontainer soap = new WMTS_SOAPcontainer( WMTS_Constants.GET_TILE, soapURIstr );
 
@@ -106,7 +102,7 @@ public class GetTileParametersSoap extends AbstractBaseGetTileFixture {
                 soap.AddParameter( WmtsNamespaces.serviceOWS, WMTS_Constants.TILE_COL_PARAM, tileCol );
 
                 SOAPMessage soapResponse = soap.getSOAPresponse( true );
-                sa.assertTrue( soapResponse != null, "SOAP reposnse came back null" );
+                sa.assertTrue( soapResponse != null, "SOAP response came back null" );
 
                 Document soapDocument = (Document) soap.getResponseDocument();
 

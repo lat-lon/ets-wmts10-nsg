@@ -54,7 +54,6 @@ public class GetTileParametersKvp extends AbstractBaseGetTileFixture {
             getTileURI = ServiceMetadataUtils.getOperationEndpoint_KVP( this.wmtsCapabilities, WMTS_Constants.GET_TILE,
                                                                         ProtocolBinding.GET );
         }
-        String requestFormat = null;
 
         try {
             XPath xPath = createXPath();
@@ -77,7 +76,7 @@ public class GetTileParametersKvp extends AbstractBaseGetTileFixture {
             for ( int i = 0; i < imageFormats.getLength(); i++ ) {
                 this.reqEntity.removeKvp( WMTS_Constants.FORMAT_PARAM );
 
-                requestFormat = imageFormats.item( i ).getTextContent().trim();
+                String requestFormat = imageFormats.item( i ).getTextContent().trim();
                 this.reqEntity.addKvp( WMTS_Constants.FORMAT_PARAM, requestFormat );
 
                 ClientResponse rsp = wmtsClient.submitRequest( this.reqEntity, getTileURI );

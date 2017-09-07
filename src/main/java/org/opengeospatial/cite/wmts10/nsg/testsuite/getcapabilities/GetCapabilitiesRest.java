@@ -36,8 +36,6 @@ public class GetCapabilitiesRest extends AbstractBaseGetCapabilitiesFixture {
 
     private URI restURI;
 
-    private boolean _debug = false;
-
     @Test(description = "NSG Web Map Tile Service (WMTS) 1.0.0, Requirement 4", dependsOnMethods = "verifyGetCapabilitiesSupported")
     public void wmtsCapabilitiesRESTCapable()
                             throws XPathExpressionException, XPathFactoryConfigurationException, URISyntaxException {
@@ -62,15 +60,11 @@ public class GetCapabilitiesRest extends AbstractBaseGetCapabilitiesFixture {
         try {
             Document responseDoc = URIUtils.resolveURIAsDocument( restURI );
             assertTrue( WMTS_Constants.WMTS_CAPABILITIES.equals( responseDoc.getDocumentElement().getLocalName() ),
-                        "Invalid REST request for WMTS ServeiceMetadata capabilities document: "
+                        "Invalid REST request for WMTS ServiceMetadata capabilities document: "
                                                 + responseDoc.getDocumentElement().getNodeName() );
         } catch ( Exception e ) {
-            System.out.println( e.getMessage() );
-            if ( this._debug ) {
-                e.printStackTrace();
-            }
             assertTrue( false,
-                        "Error found when retrieving REST  WMTS ServeiceMetadata capabilities document: "
+                        "Error found when retrieving REST WMTS ServiceMetadata capabilities document: "
                                                 + e.getMessage() );
         }
     }

@@ -55,7 +55,7 @@ public class GetCapabilitiesSoap extends AbstractBaseGetCapabilitiesFixture {
                                     WMTS_Constants.OUTPUT_PARAM, WMTS_Constants.SOAP_XML );
 
         SOAPMessage soapResponse = soap.getSOAPresponse( true );
-        assertTrue( soapResponse != null, "SOAP reposnse came back null" );
+        assertTrue( soapResponse != null, "SOAP response came back null" );
 
         Document soapDocument = soap.getResponseDocument();
         assertXPath( "//wmts:Capabilities/@version = '1.0.0'", soapDocument, NS_BINDINGS );

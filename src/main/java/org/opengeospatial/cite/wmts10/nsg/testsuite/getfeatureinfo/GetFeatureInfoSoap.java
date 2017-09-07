@@ -93,7 +93,7 @@ public class GetFeatureInfoSoap extends AbstractBaseGetFeatureInfoFixture {
             soap.AddParameter( WmtsNamespaces.serviceOWS, WMTS_Constants.INFO_FORMAT_PARAM, infoFormat );
 
             SOAPMessage soapResponse = soap.getSOAPresponse( true );
-            assertTrue( soapResponse != null, "SOAP reposnse came back null" );
+            assertTrue( soapResponse != null, "SOAP response came back null" );
 
             Document soapDocument = (Document) soap.getResponseDocument();
             this.parseNodes( soapDocument, 0 );

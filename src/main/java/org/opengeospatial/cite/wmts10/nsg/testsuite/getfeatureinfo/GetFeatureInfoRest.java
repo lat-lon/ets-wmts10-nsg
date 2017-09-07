@@ -44,8 +44,6 @@ public class GetFeatureInfoRest extends AbstractBaseGetFeatureInfoFixture {
 
     private URI getFeatureInfoURI = null;
 
-    private boolean _debug = false;
-
     @Test(description = "NSG Web Map Tile Service (WMTS) 1.0.0, Requirement 10", dependsOnMethods = "verifyGetFeatureInfoSupported")
     public void wmtsGetFeatureInfoRESTCapable()
                             throws XPathExpressionException, XPathFactoryConfigurationException {
@@ -164,10 +162,6 @@ public class GetFeatureInfoRest extends AbstractBaseGetFeatureInfoFixture {
 
             }
         } catch ( XPathExpressionException | XPathFactoryConfigurationException xpe ) {
-            System.out.println( xpe.getMessage() );
-            if ( this._debug ) {
-                xpe.printStackTrace();
-            }
             assertTrue( false, "Error found when retrieving REST GetFeatureInfo request: " + xpe.getMessage() );
         }
     }
